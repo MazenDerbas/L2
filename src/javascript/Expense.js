@@ -16,8 +16,8 @@ export class Expense {
       return this.#name;
     }
   
-    #setName(newName) {
-      this._name = newName;
+    #setName(name) {
+      this.#name = name;
     }
   
     getAmount () {
