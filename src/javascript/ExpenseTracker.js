@@ -26,15 +26,23 @@ export class ExpenseTracker{
         return this.#budgetList;
     }
 
-    addExpense (name, amount, date, category){
-        const expence = new Expense (name, amount, date, category);
-        this.#expenseList.push(expence);
-    }
-
-    addCategory( name){
+    #addCategory( name){
         const category = new Category(name);
         this.#categoryLista.push(category);
     }
+
+    addExpense (name, amount, date, category){
+        const existingCategory = this.getCategoryLista().find(cat => cat.getName() === category);
+        if (!existingCategory) {
+            this.#addCategory(category);
+        } 
+        const expense = new Expense (name, amount, date, category);
+        this.#expenseList.push(expense);
+    }
+
+
+
+
 
     addBudget (category,amount){
         const budget = new Budget (category , amount);
@@ -89,4 +97,22 @@ export class ExpenseTracker{
      }
      return remain;
    }
+
+
+   getExpenseReport() {
+
+    const summary = {};
+    let totalExpenses = 0;
+    const expenses = this.getExpensLista()
+
+    for (const expense of expenses) {
+      totalExpenses = this.getCategoryExpenses(expense.getCategory())
+      summary[expense.getCategory()] = totalExpenses
+    }
+  
+    return summary;
+  }
 }
+  
+ 
+

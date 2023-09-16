@@ -20,12 +20,12 @@ tracker.addExpense("bus",   20 , "2023-09-10", "Transport");
 tracker.addExpense("train",   30 , "2023-09-10", "Transport");
 
 
+tracker.addExpense("train",   30 , "2023-09-10", "Leasure");
 
-
-tracker.addCategory(category1)
-tracker.addCategory(category2)
 
 tracker.addBudget("Food", "500")
+
+console.log(tracker.getCategoryLista())
 
 
 //console.log(tracker)
@@ -34,10 +34,11 @@ tracker.addBudget("Food", "500")
 
 //console.log(tracker.getExpensesByCategory("Food"))
 
-console.log(tracker.getTotalExpenses())
+//console.log(tracker.getTotalExpenses())
 
-console.log (tracker.getCategoryExpenses("Food"))
+//console.log (tracker.getCategoryExpenses("Food"))
 //console.log (tracker.getCategoryExpenses("Transport"))
 
-console.log (tracker.getRemainingBudget("Food"))
+//console.log (tracker.getRemainingBudget("Food"))
 
+console.log(tracker.getExpenseReport())
