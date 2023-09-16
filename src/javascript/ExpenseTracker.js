@@ -43,7 +43,7 @@ export class ExpenseTracker{
 
     getExpensesByCategory(category) {
         const categoryExpenses = []
-        for (const expense of this.#expenseList){
+        for (const expense of this.getExpensLista()) {
             if (expense.getCategory() === category){
                 categoryExpenses.push(expense);
             }
@@ -54,11 +54,39 @@ export class ExpenseTracker{
    getTotalExpenses () {
      let amount = 0;
      
-     for (const expense of this.#expenseList){
+     for (const expense of this.getExpensLista()){
          if(expense.getAmount()){
              amount += expense.getAmount()
          }
      }
      return amount
+   }
+
+   getCategoryExpenses (category) {
+     let amount = 0;
+
+     for (const expense of this.getExpensLista()) {
+        if (expense.getCategory() === category) {
+            amount += expense.getAmount();
+        }
+      }
+      return amount;
+   }
+
+   getRemainingBudget (category) {
+    let budget;
+    let remain = 0;
+     for (const b of this.getBudgetList()) {
+        if (b.getCategory() === category) {
+            budget = b;
+           
+        }
+        console.log(budget)
+     }
+     if (budget) {
+        const categoryExpenses = this.getCategoryExpenses(budget.getCategory())
+        remain = budget.getAmount() - categoryExpenses;
+     }
+     return remain;
    }
 }

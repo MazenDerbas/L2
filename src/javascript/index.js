@@ -8,15 +8,16 @@ import { ExpenseTracker } from "./ExpenseTracker.js";
 const tracker = new ExpenseTracker();
 
 const category1 = new Category("Food")
-const category2 = new Category("Food2")
+const category2 = new Category("Transport")
 
 
 //
-tracker.addExpense("Lunch",   15 , "2023-09-10", "Food" , "sad");
-tracker.addExpense("Lunch",   15 , "2023-09-10", "Food" , "sad");
+tracker.addExpense("Lunch",   15 , "2023-09-10", "Food");
+tracker.addExpense("Lunch",   25 , "2023-09-10", "Food" );
+tracker.addExpense("Lunch",   500 , "2023-09-10", "Food" );
 
-tracker.addExpense("Lunch",   15 , "2023-09-10", "Food2" , "sad");
-tracker.addExpense("Lunch",   15 , "2023-09-10", "Food2" , "sad");
+tracker.addExpense("bus",   20 , "2023-09-10", "Transport");
+tracker.addExpense("train",   30 , "2023-09-10", "Transport");
 
 
 
@@ -31,7 +32,12 @@ tracker.addBudget("Food", "500")
 
 //console.log(tracker.getExpensLista())
 
-console.log(tracker.getExpensesByCategory("Food"))
+//console.log(tracker.getExpensesByCategory("Food"))
 
 console.log(tracker.getTotalExpenses())
+
+console.log (tracker.getCategoryExpenses("Food"))
+//console.log (tracker.getCategoryExpenses("Transport"))
+
+console.log (tracker.getRemainingBudget("Food"))
 

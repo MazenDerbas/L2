@@ -8,3 +8,5 @@ Managing expenses is a hard task for many people. The Expense Tracker Module sim
 
 ## Features
 - **Expense Management**: Easily add and store individual expenses with its information
+- **Category Organization**: Create and manage expense categories to classify and group expenses according to your needs.
+- **Budget Tracking**: Set budgets for different spending categories, helping you stay within financial limits.
