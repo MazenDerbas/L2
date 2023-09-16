@@ -41,9 +41,6 @@ export class ExpenseTracker{
     }
 
 
-
-
-
     addBudget (category,amount){
         const budget = new Budget (category , amount);
         this.#budgetList.push(budget);
@@ -100,7 +97,6 @@ export class ExpenseTracker{
 
 
    getExpenseReport() {
-
     const summary = {};
     let totalExpenses = 0;
     const expenses = this.getExpensLista()
@@ -111,6 +107,32 @@ export class ExpenseTracker{
     }
   
     return summary;
+  }
+
+  getExpensesByDate (date) {
+    const expenses = this.getExpensLista();
+    let expenseDate = []
+    for (const expense of expenses){
+        console.log (expense.getDate() )
+        if (expense.getDate() === date){
+          expenseDate.push(expense)
+        }
+    }
+    return expenseDate;
+  }
+
+  expensesByInterval ( startDate, endsDate) {
+    const expenses = this.getExpensLista();
+    let expenseInterval = []
+
+    for (const expense of expenses) {
+
+        if (expense.getDate() <= endsDate && expense.getDate() >= startDate) {  
+            expenseInterval.push(expense)
+        }
+    }
+    
+    return expenseInterval
   }
 }
   
