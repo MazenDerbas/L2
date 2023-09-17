@@ -1,6 +1,8 @@
 
 import { Category } from "./Category.js";
 import { ExpenseTracker } from "./ExpenseTracker.js";
+import { Chart } from "./chart.js";
+
 
 
 
@@ -48,3 +50,17 @@ console.log(tracker.expensesByInterval("2023-08-10", "2023-09-10"))
 //console.log (tracker.getRemainingBudget("Food"))
 
 console.log(tracker.getExpenseReport())
+
+
+const expensesWithinInterval = tracker.expensesByInterval("2023-08-10", "2023-09-13");
+
+const data = expensesWithinInterval.map(expense => ({
+    label: expense.getCategory(), 
+    value: expense.getAmount(), 
+  }));
+
+
+  const barChart = new Chart ('barChart', data)
+  barChart.drawBarChart();
+
+  
