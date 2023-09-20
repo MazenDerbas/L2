@@ -8,7 +8,7 @@ import { Expense } from "./Expense.js";
 */
 export class ExpenseTracker{
     #expenseList
-    #categoryLista
+    #categoryList
     #budgetList 
 
     /**
@@ -16,7 +16,7 @@ export class ExpenseTracker{
     */
     constructor() {
         this.#expenseList = [];
-        this.#categoryLista = [];
+        this.#categoryList = [];
         this.#budgetList = [];
     }
 
@@ -24,7 +24,7 @@ export class ExpenseTracker{
     * Get the list of expenses.
     * @returns {Expense[]} An array of Expense objects.
     */
-    getExpensLista() {
+    getExpensList() {
         return this.#expenseList;
     }
 
@@ -32,8 +32,8 @@ export class ExpenseTracker{
     * Get the list of categories.
     * @returns {Category[]} An array of Category objects.
     */
-    getCategoryLista() {
-        return this.#categoryLista;
+    getCategoryList() {
+        return this.#categoryList;
     }
 
     /**
@@ -50,7 +50,7 @@ export class ExpenseTracker{
     */
     #addCategory(name) {
         const category = new Category(name);
-        this.#categoryLista.push(category);
+        this.#categoryList.push(category);
     }
 
     /**
@@ -61,7 +61,7 @@ export class ExpenseTracker{
      * @param {string} category - The category of the expense.
      */
     addExpense (name, amount, date, category){
-        const existingCategory = this.getCategoryLista().find(cat => cat.getName() === category);
+        const existingCategory = this.getCategoryList().find(cat => cat.getName() === category);
         if (!existingCategory) {
             this.#addCategory(category);
         } 
@@ -86,7 +86,7 @@ export class ExpenseTracker{
      */
     getExpensesByCategory(category) {
         const categoryExpenses = []
-        for (const expense of this.getExpensLista()) {
+        for (const expense of this.getExpensList()) {
             if (expense.getCategory() === category){
                 categoryExpenses.push(expense);
             }
@@ -101,7 +101,7 @@ export class ExpenseTracker{
     getTotalExpenses () {
         let amount = 0;
      
-        for (const expense of this.getExpensLista()){
+        for (const expense of this.getExpensList()){
             if(expense.getAmount()){
              amount += expense.getAmount()
             }
@@ -117,7 +117,7 @@ export class ExpenseTracker{
     getCategoryExpenses (category) {
         let amount = 0;
 
-        for (const expense of this.getExpensLista()) {
+        for (const expense of this.getExpensList()) {
             if (expense.getCategory() === category) {
             amount += expense.getAmount();
             }
@@ -133,12 +133,19 @@ export class ExpenseTracker{
     getRemainingBudget (category) {
         let budget;
         let remain = 0;
+        let categoryExists = false; // Flag to check if the category exists
         for (const b of this.getBudgetList()) {
             if (b.getCategory() === category) {
             budget = b;
+            categoryExists = true; // Set the flag to true if the category is found
            
             }
         }
+        
+        if (!categoryExists) {
+            throw new Error('Please add a budget for the category: ' + category);
+        }
+
         if (budget) {
             const categoryExpenses = this.getCategoryExpenses(budget.getCategory())
             remain = budget.getAmount() - categoryExpenses;
@@ -153,7 +160,7 @@ export class ExpenseTracker{
     getExpenseReport() {
         const summary = {};
         let totalExpenses = 0;
-        const expenses = this.getExpensLista()
+        const expenses = this.getExpensList()
 
         for (const expense of expenses) {
             totalExpenses = this.getCategoryExpenses(expense.getCategory())
@@ -189,7 +196,7 @@ export class ExpenseTracker{
      * @returns {Expense[]} An array of Expense objects for the specified date.
      */
     getExpensesByDate (date) {
-        const expenses = this.getExpensLista();
+        const expenses = this.getExpensList();
         let expenseDate = []
         for (const expense of expenses){
             console.log (expense.getDate() )
@@ -199,7 +206,7 @@ export class ExpenseTracker{
         }
         return expenseDate;
     }
-    
+
     /**
      * Get expenses within a specified date interval.
      * @param {string} startDate - The start date of the interval in 'YYYY-MM-DD' format.
@@ -207,7 +214,7 @@ export class ExpenseTracker{
      * @returns {Expense[]} An array of Expense objects within the specified date interval.
      */
     expensesByInterval ( startDate, endsDate) {
-        const expenses = this.getExpensLista();
+        const expenses = this.getExpensList();
         let expenseInterval = []
 
         for (const expense of expenses) {
