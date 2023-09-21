@@ -13,6 +13,7 @@
 | **getExpensesByCategory** and  **getCategoryExpenses**  Method names used to get expense info                                    |   **Make Meaningful Distinctions**<br>   The two names sound very similar and it can cause confusion when the first method return a list of expenses and the other sum of them.<br> Suggest renaming the method for the sum to   `getExpenesAmountByCategory`<br> <br> **Pick One Word per Concept** I used the prefix get in the methods when I want to fetch information. It is easy to understand the concept of the methods stuck with the same word         |
 |                                           |                                                     |
 | **addExpense**    | **Intention-Revealing Names**<br> he name "addExpense" clearly suggests the intent of the method. A user can easily use that this method will be used to add an expense. It is maybe not clear if the expense will add to list or database or maybe collection. But I think the name is sufficient to understand th purpose   |
+|                   |                   |
 
 
 ## Reflection Chapter 2 
