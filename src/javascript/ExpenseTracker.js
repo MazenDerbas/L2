@@ -114,7 +114,7 @@ export class ExpenseTracker{
      * @param {string} category - The category for which to calculate total expenses.
      * @returns {number} The total expenses for the specified category as a numeric value.
      */
-    getCategoryExpenses (category) {
+    getExpenesAmountByCategory (category) {
         let amount = 0;
 
         for (const expense of this.getExpensList()) {
@@ -147,7 +147,7 @@ export class ExpenseTracker{
         }
 
         if (budget) {
-            const categoryExpenses = this.getCategoryExpenses(budget.getCategory())
+            const categoryExpenses = this.getExpenesAmountByCategory(budget.getCategory())
             remain = budget.getAmount() - categoryExpenses;
         }
         return remain;
@@ -163,7 +163,7 @@ export class ExpenseTracker{
         const expenses = this.getExpensList()
 
         for (const expense of expenses) {
-            totalExpenses = this.getCategoryExpenses(expense.getCategory())
+            totalExpenses = this.getExpenesAmountByCategory(expense.getCategory())
             summary[expense.getCategory()] = totalExpenses
         }
   
@@ -179,7 +179,7 @@ export class ExpenseTracker{
         for (const budget of this.getBudgetList()) {
             const category = budget.getCategory();
             const totalBudget = budget.getAmount();
-            const categoryExpenses = this.getCategoryExpenses(category);
+            const categoryExpenses = this.getExpenesAmountByCategory(category);
             const remainingBudget = totalBudget - categoryExpenses;
 
             budgetReport[category] = {
@@ -213,7 +213,7 @@ export class ExpenseTracker{
      * @param {string} endsDate - The end date of the interval in 'YYYY-MM-DD' format.
      * @returns {Expense[]} An array of Expense objects within the specified date interval.
      */
-    expensesByInterval ( startDate, endsDate) {
+    getExpensesByDateInterval ( startDate, endsDate) {
         const expenses = this.getExpensList();
         let expenseInterval = []
 
