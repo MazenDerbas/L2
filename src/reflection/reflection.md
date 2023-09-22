@@ -12,7 +12,40 @@
 
 ## Reflection Chapter 2 
 
-In Chapter 2 of the book, I learned about the importance of naming things in code. Good names help people understand what the code is doing. Like in my project, I used names that tell what the code does, like "ExpenseTracker" which tracks expenses, or "Chart" which is probably about drawing bar charts. But I also found mistakes. I used a Swedish word "Lista" in "getExpensLista" which can confuse non-Swedish people. So, I need to use words that most coders will understand.
+In Chapter 2 of the book, I learned it's really important to choose good names when writing code. Good names make it easy for people to get what the code does. For example, in my project, I named the main class to "ExpenseTracker." This name shows it's about keeping track of expenses. I also have named another class to "Chart," which is likely about making charts.
 
-I learnded to make make the names my classes and methods clear, simple, and easy for others to understand. It's not just about picking any name; it's about picking names that immediately tell someone what the class, method, or variable does. for exemple in my project, "ExpenseTracker" directly tells you its job – it tracks expenses. Similarly, "addExpense" However, I realized I've also made some naming choices that might not be clear to everyone. Using methods with similar names might confuse people.
-The good naming can be like a short comment or documentation. It helps the next person (or even future me) quickly understand the code without having to dig deep into it. It's like giving a clear title to a story. If done right, the reader will know what to expect from the start.
+I tried to use verbs for the methods and nouns for the classes and never try to be cute by using odd method names. 
+But I made a mistake. I used the Swedish word "Lista" in "getExpensLista." This can be confusing for people who don't speak Swedish. I need to use words that most people will get.
+
+The big lesson was to give clear names to things in my code. I shouldn't just pick any name. The name should tell people what that part of the code does. Like the method "getRemainingBudget" which return the amount of the left budget of the category. And "addExpense" is about adding an expense. But I saw that some names I chose might be confusing. Especially if they sound like another name till example getExpensesByCategory and getCategoryExpenses .
+
+Good names are super helpful. They can work like a mini-guide or note. This means the next person looking at my code (or even me in the future) can quickly understand it. It's like giving a book a clear title. If the title is good, you have a good idea of the story before you even start reading.
+
+<br>
+<br>
+
+## Chapter 3 : Functions
+
+|  Name and Explanation |  |   Reflection Rules from Clean Code   |
+| -----                   | ----- | ------ |
+| **drawBarChart** |  | **small** <br> I tried to keep methods and function as short as possible but because I struggled with drawBarChart function I totally forgot about this concept and I ended up with a function with more than 30 lines. <br> **Do One Thing** <br> Here I made also a mistake with I did not do with other functions. The function drawBarChart calculate the max value of the enterd data which I should do it in separate function   |
+| **getTotalExpenses**   | | **One Level of Abstraction per Function** <br> The function is mostly at a high level of abstraction getting the total expenses. I think when the function check for if(expense.getAmount()) it gets into a slightly lower level by verifying details about each expense.  **Do One Thing** <br> the function's main job is to add up amount of expenses I think the fucntion largely follows the "Do One Thing" principle.  |
+| **getExpensesByCategory** | | **Use Descriptive Names** The method's name, getExpensesByCategory, speaks for itself. You can instantly tell that it fetches expenses for a given category. You don't even need to look at the implementation or read extra comments to get it. It's like saying, "What's this function do?" and the name whispers back, "I'll show you expenses for a category."   |
+| **addExpense**  | |  **Function Arguments** <br> The function has four arguments which is polyadic. According the book I should not use his amount of arguemnts. I could avoid this by just using one argumment `addExpense(expense)` and make the user creat new object of class Expense <br> **Have No Side Effects**  <br> This function has side effects as it potentialy add a new category if the category does not exist. I could break down the function into function that checks if the category exist and one to add the expense|
+| **getRemainingBudget** | | **Fnction Argument** <br> The function takes a single argument, which is good. It's clear that we are getting the remaining budget for a particular category. <br> **Structured Programming** <br> The function uses structured programming with clear loops and conditionals. There isn’t any use of goto or other unstructured jumps, so it fullfil the guidelines of structured programming. |
+
+<br>
+
+## Reflections on Chapter 3 
+
+Reading Chapter 3 of "Clean Code" give me a new perspective about how to write good functions. I am a new programmer with no previous experince in this faild. I never thought about how important the structure of the code is until I read this chapter
+
+Firstly, I learned the important value of simplicity. Martin emphasizes how the best functions are those that do one thing and do it well. They should be small, focused, and free from side effects. Before this chapter, I never really gave much thought to the size of a function. However. This made made me realize that longer functions tend to be harder to understand and maintain.
+
+additionally on the topic of small functions, the suggestion that a function should hardly ever be more than 20 lines felt a bit rough. I understand the logic; a smaller function is easier to digest and troubleshoot. But I think there are times when it makes more sense for a function to be slightly longer if it aids clarity or avoids unnecessary details functions
+
+I also learned the importance of naming functions descriptively. A name like isUserValid() is so much clearer than something vague like check1(). This seems obvious, but in the rush of coding, it's easy to forget this simple guideline. A well-named function can reduce the need for a comment because the name itself becomes self-explanatory.
+
+I also learnd that fewer parameters a function has, the better. This is a point I somewhat disagree with. While I understand that having fewer arguments makes a function easier to understand and use, there are situations where multiple parameters are necessary for the function to perform its task. I think the emphasis should be on clarity and necessity, rather than an number
+
+Chapter 3 makes me see that functions not just as tools but as art forms that require care and thoughtful design. It's clear that the road to clean code isn't just about making code work; it's about making code that stands the test of time, that other people can understand and that remains maintainable and bug-free.

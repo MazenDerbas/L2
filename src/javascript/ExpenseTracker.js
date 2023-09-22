@@ -179,7 +179,7 @@ export class ExpenseTracker{
         for (const budget of this.getBudgetList()) {
             const category = budget.getCategory();
             const totalBudget = budget.getAmount();
-            const categoryExpenses = this.getExpenesAmountByCategory(category);
+            const categoryExpenses = this.getCategoryExpenses(category);
             const remainingBudget = totalBudget - categoryExpenses;
 
             budgetReport[category] = {
