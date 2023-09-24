@@ -10,3 +10,22 @@ Managing expenses is a hard task for many people. The Expense Tracker Module sim
 - **Expense Management**: Easily add and store individual expenses with its information
 - **Category Organization**: Create and manage expense categories to classify and group expenses according to your needs.
 - **Budget Tracking**: Set budgets for different spending categories, helping you stay within financial limits.
+
+
+
+## Code Example
+
+```javascript
+const expense = new Expense("Dinner", 50, "2023-09-24", "Food");
+const budget = new Budget("Food", 200);
+```
+
+
+## Installation
+
+## Test
+
+Run the built in unit tests with:
+```bash
+npm test
+```
