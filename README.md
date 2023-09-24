@@ -16,10 +16,33 @@ Managing expenses is a hard task for many people. The Expense Tracker Module sim
 ## Code Example
 
 ```javascript
-const expense = new Expense("Dinner", 50, "2023-09-24", "Food");
-const budget = new Budget("Food", 200);
+
+//Add expense and budget
+const tracker = new ExpenseTracker ();
+tracker.addExpense("Lunch",   25 , "2023-09-10", "Food" );
+tracker.addExpense("train",   30 , "2023-09-11", "Transport");
+
+tracker.addBudget("Food", "500")
+
+console.log(tracker.getRemainingBudget('Food'))
+console.log(tracker.getBudgetReport())
+console.log(tracker.getExpenseReport())
 ```
 
+```javascript
+//Add a bar chart
+const containerId = 'barChart';
+const expensesInAugust = tracker.getExpensesByDateInterval('2023-09-10', '2023-09-11');
+
+const dateChartData = expensesInAugust.map(expense => ({
+    label: expense.getName(),
+    value: expense.getAmount()
+}));
+
+// Draw the chart
+const dateChart = new Chart(containerId, dateChartData);
+dateChart.drawBarChart();
+```
 
 ## Installation
 
