@@ -54,18 +54,32 @@ export class ExpenseTracker{
     }
 
     /**
+    * search for a category.
+    * @param {string} name - The name of the category to find.
+    */
+
+    #findCategory(name) {
+        for (let i = 0; i < this.getCategoryList().length; i++) {
+            if (this.getCategoryList()[i].getName() === name) {
+                return this.getCategoryList()[i];
+            }
+        }
+        return;
+    }
+
+    /**
      * Add an expense to the tracker.
      * @param {string} name - The name of the expense.
      * @param {number} amount - The amount of the expense.
      * @param {string} date - The date of the expense in 'YYYY-MM-DD' format.
      * @param {string} category - The category of the expense.
      */
-    addExpense (name, amount, date, category){
-        const existingCategory = this.getCategoryList().find(cat => cat.getName() === category);
-        if (!existingCategory) {
+    addExpense(name, amount, date, category) {
+    
+        if (!this.#findCategory(category)) {
             this.#addCategory(category);
-        } 
-        const expense = new Expense (name, amount, date, category);
+        }
+        const expense = new Expense(name, amount, date, category);
         this.#expenseList.push(expense);
     }
 
@@ -75,8 +89,37 @@ export class ExpenseTracker{
      * @param {number} amount - The budget amount.
      */
     addBudget (category,amount){
+
+        if (!this.#findCategory(category)) {
+            this.#addCategory(category);
+        }  
+        
         const budget = new Budget (category , amount);
         this.#budgetList.push(budget);
+    } 
+
+    /**
+    * Removes an expense from the expense list.
+    * @param {string} name - The name of the expense to remove.
+    */
+    removeExpense(name) {
+        for (let i = 0; i < this.getExpensList().length; i++) {
+            if (this.getExpensList()[i].getName() === name) {
+                this.#expenseList.splice(i, 1);
+            }
+        }
+    }
+
+    /**
+    * Removes a budget for a specific category .
+    * @param {string} category - The name of the category for which the budget is to be removed.
+    */
+    removeBudget(category) {
+        for (let i = 0; i < this.#budgetList.length; i++) {
+            if (this.#budgetList[i].getCategory() === category) {
+                this.#budgetList.splice(i, 1);
+            }
+        }
     }
 
     /**
@@ -86,7 +129,11 @@ export class ExpenseTracker{
      */
     getExpensesByCategory(category) {
         const categoryExpenses = []
-        for (const expense of this.getExpensList()) {
+
+        if (!this.#findCategory(category)) {
+            throw new Error( category + ' does not exist in the category list ');
+        }
+            for (const expense of this.getExpensList()) {
             if (expense.getCategory() === category){
                 categoryExpenses.push(expense);
             }
@@ -117,6 +164,10 @@ export class ExpenseTracker{
     getExpenesAmountByCategory (category) {
         let amount = 0;
 
+        if (!this.#findCategory(category)) {
+            throw new Error( category + ' does not exist in the category list ');
+        }
+
         for (const expense of this.getExpensList()) {
             if (expense.getCategory() === category) {
             amount += expense.getAmount();
@@ -131,23 +182,22 @@ export class ExpenseTracker{
      * @returns {number} The remaining budget amount for the specified category.
      */
     getRemainingBudget (category) {
+
         let budget;
         let remain = 0;
-        let categoryExists = false; // Flag to check if the category exists
-        for (const b of this.getBudgetList()) {
-            if (b.getCategory() === category) {
-            budget = b;
-            categoryExists = true; // Set the flag to true if the category is found
-           
-            }
+
+        if (!this.#findCategory(category)) {
+            throw new Error( category + ' does not exist in the category list');
         }
         
-        if (!categoryExists) {
-            throw new Error('Please add a budget for the category: ' + category);
+        for (const b of this.getBudgetList()) {
+            if (b.getCategory() === category) {
+            budget = b;   
+            }
         }
-
+    
         if (budget) {
-            const categoryExpenses = this.getExpenesAmountByCategory(budget.getCategory())
+            const categoryExpenses = this.getExpenesAmountByCategory(category)
             remain = budget.getAmount() - categoryExpenses;
         }
         return remain;
@@ -179,7 +229,7 @@ export class ExpenseTracker{
         for (const budget of this.getBudgetList()) {
             const category = budget.getCategory();
             const totalBudget = budget.getAmount();
-            const categoryExpenses = this.getCategoryExpenses(category);
+            const categoryExpenses = this.getExpenesAmountByCategory(category);
             const remainingBudget = totalBudget - categoryExpenses;
 
             budgetReport[category] = {
