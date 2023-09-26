@@ -49,3 +49,18 @@ I also learned the importance of naming functions descriptively. A name like isU
 I also learnd that fewer parameters a function has, the better. This is a point I somewhat disagree with. While I understand that having fewer arguments makes a function easier to understand and use, there are situations where multiple parameters are necessary for the function to perform its task. I think the emphasis should be on clarity and necessity, rather than an number
 
 Chapter 3 makes me see that functions not just as tools but as art forms that require care and thoughtful design. It's clear that the road to clean code isn't just about making code work; it's about making code that stands the test of time, that other people can understand and that remains maintainable and bug-free.
+
+<br>
+<br>
+# Reflections on the project ExpenceTracker module
+
+When I started working on the ExpenseTracker module, I thought it'd be simple. But as I got into it, I realized there were a lot of details to think about.
+
+The book says that each part of the code should do just one thing. So, I kept changing my code to make sure that is possible in my classes. This made my code cleaner and easier to check for mistakes. I can not say that all the functions and method in the module do one thing but I tried as I can to do so.
+
+Naming things in the code was another thing I learned. Instead of using short or confusing names, Before I read how to avoid mental mapping I used to use short name for the variable. But now I used clear ones that will indicate the purpose of the code within diving into details and comments. I was not easy to apply all the concepts that mentioned in the book. But by reading these concepts I got a new prespective about some tiny thing such as the class and method name. I never think that method name is more clear if we use a verb as a part of the name. I tried to follow this concept in my project so any user can easly figure out what every function should do
+
+The most challenging part was to keep the function small (under 20 lines) and to have functions that can do just one thing. I tried to follow this as much as possible but I did some exceptions in some parts 
+
+The ExpenseTracker project taught me a lot. Thanks to "Clean Code," I learned that good code isn't just about making things work but also about making it easy for others (and future me) to understand and change.
+
