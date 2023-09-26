@@ -10,6 +10,7 @@ Managing expenses is a hard task for many people. The Expense Tracker Module sim
 - **Expense Management**: Easily add and store individual expenses with its information
 - **Category Organization**: Create and manage expense categories to classify and group expenses according to your needs.
 - **Budget Tracking**: Set budgets for different spending categories, helping you stay within financial limits.
+- **Visualization**: Use the built-in charting feature to visualize your expenses and budget on a canvas.
 
 
 
@@ -46,9 +47,23 @@ dateChart.drawBarChart();
 
 ## Installation
 
+1. Clone the repository from Github by runing ```git clone git@github.com:MazenDerbas/L2.git```
+2. Open the cloned repository using visual studio code
+3. Install the required dependencies using ```npm install```
+
+## Bug Reports/Issues
+For bug reports or any other issues, please open an issue on ```https://github.com/MazenDerbas/L2/issues```
 ## Test
 
 Run the built in unit tests with:
 ```bash
 npm test
 ```
+## Version 
+1.0
+
+## License 
+[MIT](./LICENSE)
+
+## Contributing
+You are welcome to contribuet to improve the module. you can start by opening an issue with your ideas. 
