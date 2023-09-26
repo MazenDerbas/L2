@@ -1,8 +1,4 @@
-/* eslint-disable no-undef */
-// ExpenseTracker.test.js
-
 import { ExpenseTracker } from '../src/javascript/ExpenseTracker.js'
-import { Chart } from '../src/javascript/chart.js'
 
 describe('ExpenseTracker', () => {
   let tracker
@@ -161,19 +157,3 @@ describe('ExpenseTracker', () => {
     expect(tracker.getBudgetList().length).toBe(1)
   })
 })
-
-tracker.addExpense('Expense A', 50, '2023-09-14', 'Category A')
-tracker.addExpense('Expense B', 75, '2023-09-15', 'Category B')
-tracker.addExpense('Expense C', 100, '2023-09-16', 'Category C')
-
-const containerId = 'barChart'
-const expensesInAugust = tracker.getExpensesByDateInterval('2023-09-10', '2023-09-12')
-
-const dateChartData = expensesInAugust.map(expense => ({
-  label: expense.getName(),
-  value: expense.getAmount()
-}))
-
-// Draw the chart
-const dateChart = new Chart(containerId, dateChartData)
-dateChart.drawBarChart()

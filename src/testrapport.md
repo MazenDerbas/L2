@@ -1,6 +1,8 @@
 # Test Report
 
-| Test Name                                                      | Status  | Type     |
+## Test cases: ExpenseTracker Tests
+
+| Test Name                                                      | Test result  | Type     |
 |---------------------------------------------------------------|:-------:|:--------:|
 | addExpense should add an expense to the list                  |    ✓    | Auto     |
 | addExpense should add a new category if it does not exist     |    ✓    | Auto     |
@@ -17,3 +19,19 @@
 | removeExpense method should remove an existing expense from the list | ✓ | Auto |
 | removeBudget method should remove an existing expense from the list | ✓ | Auto |
 
+## Test Case: Draw a Bar Chart using the Chart class
+
+
+I test the chart class to see if I got bar chart without syntax errors. 
+
+Test step:
+1. Define the chart data with labels and their respective values
+2. Define the containerId by calling the canvas ID (barChart).
+3. Call the drawBarChart() method.
+4. Visually inspect the rendered chart in the browse
+
+Actual Outcome: I got the bar chart correctly without any errors
+
+| Test Name                                                      | Test result  | Type     |
+|---------------------------------------------------------------|:-------:|:--------:|
+| Draw a bar chart                  |   ✓     | Manuel     |
