@@ -52,7 +52,8 @@ Chapter 3 makes me see that functions not just as tools but as art forms that re
 
 <br>
 <br>
-# Reflections on the project ExpenceTracker module
+
+## Reflections on the project ExpenceTracker module
 
 When I started working on the ExpenseTracker module, I thought it'd be simple. But as I got into it, I realized there were a lot of details to think about.
 
