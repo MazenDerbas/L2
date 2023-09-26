@@ -1,4 +1,11 @@
 import { ExpenseTracker } from '../src/javascript/ExpenseTracker.js'
+import { Expense } from '../src/javascript/Expense.js'
+import { Budget } from '../src/javascript/Budget.js'
+import { Category } from '../src/javascript/Category.js'
+
+// -----------------------------------------------------------
+//  ExpenseTracker
+// -----------------------------------------------------------
 
 describe('ExpenseTracker', () => {
   let tracker
@@ -155,5 +162,74 @@ describe('ExpenseTracker', () => {
 
     tracker.removeBudget('Category A')
     expect(tracker.getBudgetList().length).toBe(1)
+  })
+})
+
+// -----------------------------------------------------------
+//  Budget
+// -----------------------------------------------------------
+
+describe('Budget class tests', () => {
+  test('should create a new Budget instance', () => {
+    const budget = new Budget('Category A', 200)
+    expect(budget.getCategory()).toBe('Category A')
+    expect(budget.getAmount()).toBe(200)
+  })
+  test('should throw error for empty  name', () => {
+    expect(() => {
+      // eslint-disable-next-line no-new
+      new Budget('', 200)
+    }).toThrow('Invalid category provided. It should be a non-empty string')
+  })
+  test('should throw error for negative expense amount', () => {
+    expect(() => {
+      // eslint-disable-next-line no-new
+      new Budget('Category A', -50)
+    }).toThrow('Invalid amount provided. It should be a non-negative number.')
+  })
+})
+
+// -----------------------------------------------------------
+//  Category
+// -----------------------------------------------------------
+
+describe('Category class tests', () => {
+  test('should create a new Category instance', () => {
+    const category = new Category('Category A')
+    expect(category.getName()).toBe('Category A')
+  })
+})
+
+// -----------------------------------------------------------
+//  Expense
+// -----------------------------------------------------------
+
+describe('Expense class tests', () => {
+  test('should create a new Expense instance', () => {
+    const expense = new Expense('Expense A', 100, '2023-09-24', 'Category A')
+    expect(expense.getName()).toBe('Expense A')
+    expect(expense.getAmount()).toBe(100)
+    expect(expense.getDate()).toBe('2023-09-24')
+    expect(expense.getCategory()).toBe('Category A')
+  })
+
+  test('should throw error for empty expense name', () => {
+    expect(() => {
+      // eslint-disable-next-line no-new
+      new Expense('', 100, '2023-09-24', 'Category A')
+    }).toThrow('Invalid expense name provided. It should be a non-empty string.')
+  })
+  test('should throw error for negative expense amount', () => {
+    expect(() => {
+      // eslint-disable-next-line no-new
+      new Expense('Expense A', -100, '2023-09-24', 'Category A')
+    }).toThrow('Invalid expense amount provided. It should be a non-negative number.')
+  })
+
+  test('should throw error for empty expense name', () => {
+    expect(() => {
+      // eslint-disable-next-line no-new
+      new Expense('Expense A', 100, '2023-09-24', '')
+    }).toThrow('Invalid category provided for expense. It should be a non-empty string.')
   })
 })

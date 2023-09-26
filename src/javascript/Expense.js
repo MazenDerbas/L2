@@ -37,6 +37,9 @@ export class Expense {
    * @param {string} name - The name of the expense.
    */
   #setName (name) {
+    if (typeof name !== 'string' || name.trim() === '') {
+      throw new Error('Invalid expense name provided. It should be a non-empty string.')
+    }
     this.#name = name
   }
 
@@ -56,6 +59,9 @@ export class Expense {
    * @private
    */
   #setAmount (amount) {
+    if (typeof amount !== 'number' || amount < 0) {
+      throw new Error('Invalid expense amount provided. It should be a non-negative number.')
+    }
     this.#amount = amount
   }
 
@@ -92,6 +98,9 @@ export class Expense {
    * @param {string} category - The category of the expense.
    */
   #setCategory (category) {
+    if (typeof category !== 'string' || category.trim() === '') {
+      throw new Error('Invalid category provided for expense. It should be a non-empty string.')
+    }
     this.#category = category
   }
 }

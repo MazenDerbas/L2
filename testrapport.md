@@ -19,6 +19,27 @@
 | removeExpense method should remove an existing expense from the list | ✓ | Auto |
 | removeBudget method should remove an existing expense from the list | ✓ | Auto |
 
+## Test cases: Budget Tests
+
+| Test Name                                                      | Test result  | Type     |
+|---------------------------------------------------------------|:-------:|:--------:|
+| should create a new Budget instance                 |    ✓    | Auto     |
+| should throw error for empty  name                |    ✓    | Auto     |
+| should throw error for negative expense amount               |    ✓    | Auto     |
+
+## Test cases: Category Tests
+| Test Name                                                      | Test result  | Type     |
+|---------------------------------------------------------------|:-------:|:--------:|
+| should create a new Category instance               |    ✓    | Auto     |
+
+## Test cases: Expense Tests
+| Test Name                                                      | Test result  | Type     |
+|---------------------------------------------------------------|:-------:|:--------:|
+| should create a new Expense instance             |    ✓    | Auto     |
+| should throw error for empty expense name            |    ✓    | Auto     |
+| should throw error for negative expense amount            |    ✓    | Auto     |
+| should throw error for empty expense name            |    ✓    | Auto     |
+
 ## Test Case: Draw a Bar Chart using the Chart class
 
 

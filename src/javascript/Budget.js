@@ -22,6 +22,9 @@ export class Budget {
    * @param {string} category - The category name.
    */
   #setCategory (category) {
+    if (typeof category !== 'string' || category.trim() === '') {
+      throw new Error('Invalid category provided. It should be a non-empty string')
+    }
     this.#category = category
   }
 
@@ -31,6 +34,10 @@ export class Budget {
    * @param {number} amount - The budgeted amount.
    */
   #setAmount (amount) {
+    if (typeof amount !== 'number' || amount < 0) {
+      throw new Error('Invalid amount provided. It should be a non-negative number.')
+    }
+
     this.#amount = amount
   }
 
