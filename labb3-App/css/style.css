@@ -1,0 +1,17 @@
+@charset "UTF-8";
+
+html{
+    font-size: 20px;
+}
+
+body {
+    background-color: #bfb9ce;
+    max-width: 1000px;
+    padding: 290px;
+    background-color: #ffffff;
+    color: #000000;
+    background-image: linear-gradient(to bottom, #053051, #ffffff ) ;
+    margin: 0 auto;
+    background-repeat: no-repeat;
+}
+
