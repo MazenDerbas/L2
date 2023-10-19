@@ -53,7 +53,7 @@ export class ExpenseTracker {
    *
    * @param {string} name - The name of the category to add.
    */
-  #addCategory (name) {
+  addCategory (name) {
     const category = new Category(name)
     this.#categoryList.push(category)
   }
@@ -83,7 +83,7 @@ export class ExpenseTracker {
    */
   addExpense (name, amount, date, category) {
     if (!this.#findCategory(category)) {
-      this.#addCategory(category)
+      this.addCategory(category)
     }
     const expense = new Expense(name, amount, date, category)
     this.#expenseList.push(expense)
@@ -97,7 +97,7 @@ export class ExpenseTracker {
    */
   addBudget (category, amount) {
     if (!this.#findCategory(category)) {
-      this.#addCategory(category)
+      this.addCategory(category)
     }
 
     const budget = new Budget(category, amount)

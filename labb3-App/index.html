@@ -10,6 +10,29 @@
 <body>
     <div>
         <h1> Welcome to the expense tracker</h1>
+
+        <form id="expenseForm"> 
+            <label for="ename">Expense Name</label>
+            <input type="text" id="exname" name="ename"></input> <br>
+            <label for ="amount">Amount</label>
+            <input type="text" id="amount" name="amount"> </input> <br>
+            <label for = "date">Date</label>
+            <input type="text" id="date" name="date" value="dd-mm-yy"> </input> <br>
+            <label for = "category">Category</label>
+            <select id ="category" name="category">
+                <option  selected ="selected" value="">Food</option>
+                <option value="">Transport</option>
+                <option value="addNew">Add new category...</option>
+            </select>
+            <input type="text" id="newCategory" name="newCategory" style="display: none" placeholder="New category name"> </input> <br>
+            <input type="submit" name="submit" value="add" style="display: none" id="addCategory"> </input> <br>
+            <label for = "submit">
+            <input type="submit" name="submit" value="submit"> </input> <br>
+            </label>
+            </form>
+
+            <div id="expenseContainer"></div>
+
     </div>
 </body>
 </html>
