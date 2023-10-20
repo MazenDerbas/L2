@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
   const categorySelect = document.getElementById('category')
   const newCategoryInput = document.getElementById('newCategory')
   const addCategory = document.getElementById('addCategory')
+  const budgetCategoryDropdown = document.getElementById('budgetCategory')
 
   const expenseTracker = new ExpenseTracker()
 
@@ -32,38 +33,61 @@ document.addEventListener('DOMContentLoaded', (event) => {
    */
   function createExpense () {
     const expenseValue = expenseName.value
-    const amoutValue = amount.value
+    const amountValue = amount.value
     const dateValue = date.value
-    let categoryValue
-    if (categorySelect.value === 'addNew') {
+    let categoryValue = categorySelect.value
+
+    // Check if 'Add new category...' option is selected.
+    if (categoryValue === 'addNew') {
       categoryValue = newCategoryInput.value
-    } else {
-      categoryValue = categorySelect.value
+      if (categoryValue.trim() === '') {
+        alert('Please enter a new category name.')
+        return
+      }
+      createCategory(categoryValue)
     }
-    newCategoryInput.style.display = 'none'
-    addCategory.style.display = 'none'
-    expenseTracker.addExpense(expenseValue, parseFloat(amoutValue), dateValue, categoryValue)
+    expenseTracker.addExpense(expenseValue, parseFloat(amountValue), dateValue, categoryValue)
+
+    expenseForm.reset()
   }
+
+  
 
   /**
    * Desc.
+   *
+   * @param categoryValue
    */
-  function creatCategory () {
-    const categoryValue = newCategoryInput.value
-    if (categoryValue === '') {
-      return
-    }
-
-    const option = document.createElement('option')
-    option.innerText = categoryValue
-    option.value = categoryValue
-    const lastOption = categorySelect.options[categorySelect.options.length - 1]
-    categorySelect.insertBefore(option, lastOption)
+  function createCategory (categoryValue) {
+    addOptionToDropDown(categorySelect, categoryValue)
+    addOptionToDropDown(budgetCategoryDropdown, categoryValue)
     expenseTracker.addCategory(categoryValue)
     newCategoryInput.value = ''
     newCategoryInput.style.display = 'none'
     addCategory.style.display = 'none'
     categorySelect.value = categoryValue
+  }
+
+  /**
+   * Desc.
+   * @param dropDown Desc.
+   * @param categoryValue
+   */
+  function addOptionToDropDown (dropDown, categoryValue) {
+    const option = document.createElement('option')
+    option.innerText = categoryValue
+    option.value = categoryValue
+    dropDown.add(option, dropDown.options[dropDown.options.length - 1])
+  }
+
+  /**
+   * Desc.
+   *
+   * @param expense
+   */
+  function deleteExpense (expense) {
+    expenseTracker.removeExpense(expense.getName())
+    displayExpense()
   }
 
   /**
@@ -76,21 +100,33 @@ document.addEventListener('DOMContentLoaded', (event) => {
     const display = expenseTracker.getExpensList()
 
     display.forEach(expense => {
-      const expenseDiv = document.createElement('div')
+      const expenseDiv = document.createElement('tr')
       expenseDiv.className = 'expense'
 
       expenseDiv.innerHTML = `
-            <p>Name: ${expense.getName()}</p>
-            <p>Amount: ${expense.getAmount()}</p>
-            <p>Date: ${expense.getDate()}</p>
+            <td>${expense.getName()}</td>
+            <td>${expense.getAmount()}</td>
+            <td>${expense.getDate()}</td>
+            <td>${expense.getCategory()}</td>
+            <td><button>Delete</button></td>
 
         `
+      const deleteButton = expenseDiv.querySelector('button')
+      deleteButton.addEventListener('click', (e) => {
+        deleteExpense(expense)
+        expenseDiv.remove()
+      })
       expenseContainer.appendChild(expenseDiv)
     })
   }
 
-  addCategory.addEventListener('click', (e) => {
-    e.preventDefault()
-    creatCategory()
+  categorySelect.addEventListener('change', (e) => {
+    if (e.target.value === 'addNew') {
+      newCategoryInput.style.display = 'block'
+      addCategory.style.display = 'block'
+    } else {
+      newCategoryInput.style.display = 'none'
+      addCategory.style.display = 'none'
+    }
   })
 })

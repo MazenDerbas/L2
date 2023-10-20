@@ -110,9 +110,10 @@ export class ExpenseTracker {
    * @param {string} name - The name of the expense to remove.
    */
   removeExpense (name) {
-    for (let i = 0; i < this.getExpensList().length; i++) {
-      if (this.getExpensList()[i].getName() === name) {
+    for (let i = 0; i < this.#expenseList.length; i++) {
+      if (this.#expenseList[i].getName() === name) {
         this.#expenseList.splice(i, 1)
+        break
       }
     }
   }

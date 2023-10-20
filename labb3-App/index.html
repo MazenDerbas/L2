@@ -9,19 +9,18 @@
 </head>
 <body>
     <div>
-        <h1> Welcome to the expense tracker</h1>
-
+   
+        
+        <div class = "container"> 
+            <div class="expense-container">
         <form id="expenseForm"> 
-            <label for="ename">Expense Name</label>
-            <input type="text" id="exname" name="ename"></input> <br>
-            <label for ="amount">Amount</label>
-            <input type="text" id="amount" name="amount"> </input> <br>
-            <label for = "date">Date</label>
-            <input type="text" id="date" name="date" value="dd-mm-yy"> </input> <br>
-            <label for = "category">Category</label>
+            <h1>Expense</h1>  
+            <input type="text" id="exname" name="ename" placeholder="Enter expense name"></input> <br>
+            <input type="text" id="amount" name="amount" placeholder="Enter Amount"> </input> <br>
+            <input type="date" id="date" name="date" value="dd-mm-yy"> </input> <br>
             <select id ="category" name="category">
-                <option  selected ="selected" value="">Food</option>
-                <option value="">Transport</option>
+                <option  selected ="selected" value="food">Food</option>
+                <option value="transport">Transport</option>
                 <option value="addNew">Add new category...</option>
             </select>
             <input type="text" id="newCategory" name="newCategory" style="display: none" placeholder="New category name"> </input> <br>
@@ -30,8 +29,55 @@
             <input type="submit" name="submit" value="submit"> </input> <br>
             </label>
             </form>
+        </div>
+            <!--Budget-->
+            <div class="budget-container">
+                <h1>Budget</h1>  
+                <input type="number" id="total-amount" placeholder="Enter amount">
+                <select id="budgetCategory" name="budgetCategory">
+                    <option selected="selected" value="food">Food</option>
+                    <option value="transport">Transport</option>
+                </select>
+                <input type="submit" class="submit" value="Set Budget"></input>
+            </div>
+        </div>
 
-            <div id="expenseContainer"></div>
+        <div class="output-container">
+            <div>
+            <p>Total Budget</p>
+            <span id="amout">0</span>
+            </div>
+            <div>
+                <p>Total Expense</p>
+                <span id="expense-value">0</span>
+            </div>
+            <div>
+                <p>Balance</p>
+                <span id="balance-value">0</span>
+            </div>
+        </div>
+
+
+        <div class="list">
+
+            <h3>Expense List</h3>
+            <table>
+            <thead>
+                <tr>
+                    <th>Expense name</th>
+                    <th>Amount</th>
+                    <th>Date</th>
+                    <th>Category</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody id="expenseContainer"></tbody>
+        </table>
+            
+
+        </div>
+
+           
 
     </div>
 </body>

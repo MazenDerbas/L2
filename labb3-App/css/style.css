@@ -5,13 +5,91 @@ html{
 }
 
 body {
-    background-color: #bfb9ce;
+    background-color: #f7f9fd;
     max-width: 1000px;
-    padding: 290px;
-    background-color: #ffffff;
-    color: #000000;
-    background-image: linear-gradient(to bottom, #053051, #ffffff ) ;
     margin: 0 auto;
-    background-repeat: no-repeat;
+    padding: 0;
+    font-family: sans-serif;
+
 }
 
+.container {
+  display:  grid;
+  grid-template-columns: 1fr 1fr;
+  width: 90%;
+  max-width: 43.75em;
+  margin: 1em auto;
+  gap: 5em;
+
+}
+
+h1,h2 {
+    margin-bottom: 10px; 
+    font-size: 20px;  
+}
+
+#expenseForm label{
+  
+}
+
+.container input {
+    display: block;
+    padding : 0.6em;
+    width: 100%;
+    padding: 0.6em 0.3em;
+    border: 1px solid #d0d0d0;
+    outline: none;
+    border-radius: 0.3em;
+    outline: none;
+    font-weight: 400;
+
+}
+
+.expense-container,
+.budget-container {
+    
+    background-color: #ffffff;
+    padding: 1.25em 0.9em;
+    border-radius: 0.3em;
+    box-shadow: 0 0.6em 1.2em rgba(28,0 , 80, 0.06);
+}
+
+.output-container {
+    display:  grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    padding: 1.25em 0.9em;
+    width: 90%;
+    max-width: 43.75em;
+    margin: 1em auto;  
+    background-color: #587ef4; 
+    color: #ffffff;
+    border-radius: 0.3em;
+    max-width: 43.75e;
+    margin: 1em auto;
+    text-align: center;
+}
+
+.list{
+    background-color: #ffffff;
+    padding: 1.25em 0.9em;
+   
+}
+
+th {
+    background-color: #4CAF50;
+    color: white;
+  }
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+
+
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
