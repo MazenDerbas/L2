@@ -32,6 +32,19 @@ h1,h2 {
   
 }
 
+.budget-container input { 
+    
+    display: block;
+    margin-top: 20px;
+}
+
+.budget-container select { 
+    
+    display: block;
+    margin-top: 20px;
+}
+
+
 .container input {
     display: block;
     padding : 0.6em;
@@ -56,17 +69,54 @@ h1,h2 {
 
 .output-container {
     display:  grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    padding: 1.25em 0.9em;
-    width: 90%;
-    max-width: 43.75em;
-    margin: 1em auto;  
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    padding: 1.25em;
+    max-width: 90%;
     background-color: #587ef4; 
     color: #ffffff;
     border-radius: 0.3em;
-    max-width: 43.75e;
     margin: 1em auto;
+}
+
+.output-container th {
+    max-width: 100%;
+    border-bottom: 1px solid #ddd; 
+    padding-left: 4em; 
+    padding-right: 2em; 
+}
+
+
+
+#budgetContainer {
+
+}
+
+.output-container table {
+    border-collapse: collapse;
     text-align: center;
+    margin-left: 2em;
+    
+    
+}
+
+#budgetContainer tr:first-child td {
+    padding-top: 20px; 
+    
+}
+
+#budgetContainer tr td {
+    padding-left: 20px;
+}
+
+#chart{
+   margin-left: 800px;
+   margin-bottom: 20px;
+   background-color: #4CAF50;
+   padding: 15px; 
+   color: #ffff;
+   border-radius: 0.5em;
+   margin-top: -40px;
+   
 }
 
 .list{
@@ -75,21 +125,33 @@ h1,h2 {
    
 }
 
-th {
+.list th {
     background-color: #4CAF50;
     color: white;
   }
 
-th, td {
+.list th, .list td {
     border: 1px solid #ddd;
     padding: 8px;
     text-align: left;
   }
 
 
-
-table {
+.list table {
     width: 100%;
     border-collapse: collapse;
   }
-  
+
+.hidden {
+    display: none;
+}
+
+#dateInput input {
+    margin-bottom: 50px;
+    margin-left: 50px;
+}
+
+#errorBudget{
+    color: red;
+    
+}

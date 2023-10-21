@@ -1,4 +1,4 @@
-import { ExpenseTracker } from '../../src/javascript/ExpenseTracker.js'
+import { BudgetForm } from './BudgetForm.js'
 import { ExpenseDisplay } from './ExpenseDisplay.js'
 
 /**
@@ -14,10 +14,12 @@ export class ExpenseForm {
   #newCategoryInput
   #addCategoryButton
   #expenseDisplay
-  
+  #budgetDisplay
+
   /**
+   * Constructs a new ExpenseForm instance.
    *
-   * @param expenseTracker
+   * @param {expenseTracker} expenseTracker - The expense tracker insatce.
    */
   constructor (expenseTracker) {
     this.#expenseTracker = expenseTracker
@@ -29,17 +31,17 @@ export class ExpenseForm {
     this.#newCategoryInput = document.getElementById('newCategory')
     this.#addCategoryButton = document.getElementById('addCategory')
     this.#expenseDisplay = new ExpenseDisplay(this.#expenseTracker)
-
-
+    this.#budgetDisplay = new BudgetForm(expenseTracker)
   }
 
   /**
-   *
+   * Registers event handlers.
    */
   registerEventHandlers () {
     this.#expenseForm.addEventListener('submit', (e) => {
       e.preventDefault()
       this.createExpense()
+      this.#budgetDisplay.displayBudget()
       this.#expenseDisplay.displayExpenses()
     })
 
@@ -55,7 +57,7 @@ export class ExpenseForm {
   }
 
   /**
-   *
+   * Creates a new expense.
    */
   createExpense () {
     const expenseValue = this.#expenseName.value
@@ -64,7 +66,7 @@ export class ExpenseForm {
     let categoryValue = this.#categorySelect.value
 
     if (categoryValue === 'addNew') {
-      categoryValue = this.newCategoryInput.value
+      categoryValue = this.#newCategoryInput.value
       this.createCategory(categoryValue)
     }
 
@@ -73,8 +75,9 @@ export class ExpenseForm {
   }
 
   /**
+   * Creates a new category from the input.
    *
-   * @param categoryValue
+   * @param {string} categoryValue -
    */
   createCategory (categoryValue) {
     this.addOptionToDropDown(this.#categorySelect, categoryValue)
@@ -89,9 +92,10 @@ export class ExpenseForm {
   }
 
   /**
+   * Adds a new option to the provided dropdown element.
    *
-   * @param dropDown
-   * @param categoryValue
+   * @param {HTMLSelectElement} dropDown .
+   * @param {string} categoryValue .
    */
   addOptionToDropDown (dropDown, categoryValue) {
     const option = document.createElement('option')
