@@ -148,10 +148,31 @@ h1,h2 {
 
 #dateInput input {
     margin-bottom: 50px;
-    margin-left: 50px;
+    margin-left: 40px;
+}
+
+#create {
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 0.5em;
+    padding: 15px;
+    
+}
+
+#show {
+background-color: #4CAF50;
+color: white;
+border-radius: 0.5em;
+padding: 15px;
+margin-left: 60em;
+    
 }
 
 #errorBudget{
     color: red;
-    
+
+}
+
+canvas {
+    padding-left: 200px;
 }
