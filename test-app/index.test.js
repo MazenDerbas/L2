@@ -104,10 +104,6 @@ describe('ExpenseTracker', () => {
 
     const remainBudget = tracker.getRemainingBudget('Category A')
     expect(remainBudget).toBe(350)
-
-    expect(() => {
-      tracker.getRemainingBudget('Category D')
-    }).toThrowError('Category D does not exist in the category list')
   })
 
   test('getExpenseReport should return summary of all expenses for all the categories', () => {

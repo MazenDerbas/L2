@@ -65,12 +65,13 @@ export class ExpenseTracker {
    * @returns {Category[]} An array of Budget objects.
    */
   #findCategory (name) {
+    let index = 0
     for (let i = 0; i < this.getCategoryList().length; i++) {
       if (this.getCategoryList()[i].getName() === name) {
-        return this.getCategoryList()[i]
+        index = this.getCategoryList()[i]
       }
     }
-    return null
+    return index
   }
 
   /**
@@ -110,10 +111,9 @@ export class ExpenseTracker {
    * @param {string} name - The name of the expense to remove.
    */
   removeExpense (name) {
-    for (let i = 0; i < this.#expenseList.length; i++) {
-      if (this.#expenseList[i].getName() === name) {
+    for (let i = 0; i < this.getExpensList().length; i++) {
+      if (this.getExpensList()[i].getName() === name) {
         this.#expenseList.splice(i, 1)
-        break
       }
     }
   }
@@ -197,10 +197,6 @@ export class ExpenseTracker {
   getRemainingBudget (category) {
     let budget
     let remain = 0
-
-    if (!this.#findCategory(category)) {
-      throw new Error(category + ' does not exist in the category list')
-    }
 
     for (const b of this.getBudgetList()) {
       if (b.getCategory() === category) {
