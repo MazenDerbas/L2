@@ -34,7 +34,7 @@ export class Chart {
       const item = this.#data[i]
       const x = this.#paddingTop + i * this.#spaceBetweenBars
       const barHeight = (item.value / maxValue) * chartHeight
-      const y = this.canvas.height - this.#paddingBottom - barHeight
+      const y = this.#canvas.height - this.#paddingBottom - barHeight
       this.#ctx.fillStyle = this.generateRandomColor()
       this.#ctx.fillRect(x, y, this.#barWidth, barHeight)
       this.#ctx.fillText(item.label, x + this.#labelOffsetX, this.#canvas.height - this.#labelOffsetY)
