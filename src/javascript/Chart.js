@@ -49,7 +49,7 @@ export class Chart {
   findMaxValue () {
     let maxValue = 0
     for (let i = 0; i < this.#data.length; i++) {
-      const item = this.data[i]
+      const item = this.#data[i]
       if (item.value > maxValue) {
         maxValue = item.value
       }
