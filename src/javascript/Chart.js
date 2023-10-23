@@ -28,7 +28,7 @@ export class Chart {
    */
   drawBarChart () {
     const maxValue = this.findMaxValue()
-    const chartHeight = this.canvas.height - this.#paddingTop
+    const chartHeight = this.#canvas.height - this.#paddingTop
     // Draw each bar based on its value
     for (let i = 0; i < this.#data.length; i++) {
       const item = this.#data[i]
