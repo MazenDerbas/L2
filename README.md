@@ -58,7 +58,7 @@ Run the built in unit tests with:
 npm test
 ```
 ## Version 
-1.0.2
+1.0.4
 
 ## License 
 [MIT](./LICENSE)
