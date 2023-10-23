@@ -1,9 +1,10 @@
 {
-  "name": "l2",
-  "version": "1.0.0",
+  "name": "@mazenderbas/l2",
+  "version": "1.0.1",
   "description": "The Expense Tracker Module is a tool to help users manage their expenses, budgets.",
   "main": "src/index.js",
   "type": "module",
+  "publishConfig": { "access": "public" },
   "scripts": {
     "dev": "vite",
     "build": "vite build",

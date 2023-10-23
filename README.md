@@ -47,9 +47,7 @@ dateChart.drawBarChart();
 
 ## Installation
 
-1. Clone the repository from Github by runing ```git clone git@github.com:MazenDerbas/L2.git```
-2. Open the cloned repository using visual studio code
-3. Install the required dependencies using ```npm install```
+3. Install the required dependencies using ```npm i @mazenderbas/l2```
 
 ## Bug Reports/Issues
 For bug reports or any other issues, please open an issue on ```https://github.com/MazenDerbas/L2/issues```
@@ -60,7 +58,7 @@ Run the built in unit tests with:
 npm test
 ```
 ## Version 
-1.0
+1.1
 
 ## License 
 [MIT](./LICENSE)
